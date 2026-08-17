@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKO — Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandDark: '#0a0a0a',
+              brandGray: '#1a1a1a',
+              brandLight: '#f5f5f5',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      .page-section {
+        display: none;
+      }
+      .page-section.active {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .project-category {
+        display: none;
+      }
+      .project-category.active {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+</head>
+<body class="bg-brandDark text-brandLight antialiased selection:bg-white selection:text-black flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-brandDark/90 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
+        <a href="#works" onclick="navigateTo('works')" class="text-xl font-bold tracking-widest uppercase hover:opacity-80 transition-opacity">
+            DARKO
+        </a>
+        <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase text-neutral-400">
+            <button onclick="navigateTo('works')" id="nav-works" class="nav-btn hover:text-white transition-colors">Works</button>
+            <div class="relative group">
+                <button onclick="navigateTo('projects')" id="nav-projects" class="nav-btn hover:text-white transition-colors flex items-center">
+                    Projects
+                    <svg class="w-3 h-3 ml-1 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="absolute left-0 mt-0 pt-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <div class="bg-brandGray border border-white/10 shadow-xl py-2">
+                        <button onclick="navigateTo('projects')" class="block w-full text-left px-4 py-2 hover:bg-white/10 transition-colors text-[10px] tracking-widest uppercase">All Collections</button>
+                        <button onclick="navigateTo('quantum-horizon')" class="block w-full text-left px-4 py-2 hover:bg-white/10 transition-colors text-[10px] tracking-widest uppercase font-bold text-white border-t border-white/5">Quantum Horizon</button>
+                    </div>
+                </div>
+            </div>
+            <button onclick="navigateTo('story')" id="nav-story" class="nav-btn hover:text-white transition-colors">Story</button>
+            <button onclick="navigateTo('contact')" id="nav-contact" class="nav-btn hover:text-white transition-colors">Contact</button>
+        </nav>
+        <button onclick="navigateTo('contact')" class="text-xs uppercase border border-white/30 px-4 py-2 hover:bg-white hover:text-black transition-all font-mono">
+            Get in Touch
+        </button>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow pt-28 pb-16 px-6 max-w-7xl mx-auto w-full">
+
+        <!-- ================= PAGE 1: WORKS ================= -->
+        <section id="page-works" class="page-section">
+            <div class="mb-12">
+                <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tight mb-4">Selected Works</h1>
+                <p class="text-neutral-400 max-w-2xl text-lg font-light">Digital illustrations, generative art pieces, and visual explorations.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="group cursor-pointer" onclick="navigateTo('quantum-horizon')">
+                    <div class="overflow-hidden bg-brandGray aspect-[210/297] relative">
+                        <img src="https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ec9cda6f57204ff649980c9d3348d9/4eec9cda6f57204ff649980c9d3348d9.png" alt="Artwork 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-bold uppercase tracking-wide">Quantum Horizon</h3>
+                            <p class="text-sm text-neutral-400 font-mono">Pixel & Vector Systems</p>
+                        </div>
+                        <span class="text-xs border border-neutral-700 px-2 py-1 text-neutral-400 font-mono">2026</span>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openFullImage('https://picsum.photos/1200/900?random=2', 'High-Contrast Stencils')">
+                    <div class="overflow-hidden bg-brandGray aspect-[210/297] relative">
+                        <img src="https://picsum.photos/800/600?random=2" alt="Artwork 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                    </div>
+                    <div class="mt-4 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-bold uppercase tracking-wide">High-Contrast Stencils</h3>
+                            <p class="text-sm text-neutral-400 font-mono">Digital Illustration</p>
+                        </div>
+                        <span class="text-xs border border-neutral-700 px-2 py-1 text-neutral-400 font-mono">2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: PROJECTS ================= -->
+        <section id="page-projects" class="page-section">
+            <div class="mb-8">
+                <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tight mb-4">Projects</h1>
+                <p class="text-neutral-400 max-w-2xl text-lg font-light">Select a category below to explore specific artwork collections.</p>
+            </div>
+
+            <!-- Sub-Tabs Navigation -->
+            <div class="flex flex-wrap gap-4 border-b border-white/10 pb-6 mb-10 text-xs font-mono uppercase tracking-wider">
+                <button onclick="switchProjectCategory('illustration')" id="subnav-illustration" class="subnav-btn bg-white text-black px-4 py-2 font-bold transition-all">
+                    Illustration
+                </button>
+                <button onclick="switchProjectCategory('character-design')" id="subnav-character-design" class="subnav-btn text-neutral-400 border border-neutral-800 px-4 py-2 hover:border-neutral-500 hover:text-white transition-all">
+                    Character Design
+                </button>
+                <button onclick="switchProjectCategory('pfp-projects')" id="subnav-pfp-projects" class="subnav-btn text-neutral-400 border border-neutral-800 px-4 py-2 hover:border-neutral-500 hover:text-white transition-all">
+                    PFP Projects
+                </button>
+                <button onclick="switchProjectCategory('storyboard')" id="subnav-storyboard" class="subnav-btn text-neutral-400 border border-neutral-800 px-4 py-2 hover:border-neutral-500 hover:text-white transition-all">
+                    Storyboard
+                </button>
+            </div>
+
+            <!-- Category 1: Illustration -->
+            <div id="cat-illustration" class="project-category active">
+                <div class="group border border-white/10 bg-brandGray/30 p-6 md:p-8 cursor-pointer hover:border-white/30 transition-all max-w-3xl" onclick="navigateTo('gallery-illustration')">
+                    <div class="overflow-hidden aspect-[16/9] bg-brandGray mb-6">
+                        <img src="https://picsum.photos/1200/675?random=101" alt="Illustration Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="text-2xl font-bold uppercase mb-1">Digital Illustration Collection</h3>
+                            <p class="text-sm font-mono text-neutral-400">Poster design, vector graphics, and digital artwork samples.</p>
+                        </div>
+                        <button class="text-xs font-mono uppercase border border-white/40 px-6 py-3 bg-white text-black font-bold shrink-0">
+                            Open Gallery &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Character Design -->
+            <div id="cat-character-design" class="project-category">
+                <div class="group border border-white/10 bg-brandGray/30 p-6 md:p-8 cursor-pointer hover:border-white/30 transition-all max-w-3xl" onclick="navigateTo('gallery-character-design')">
+                    <div class="overflow-hidden aspect-[16/9] bg-brandGray mb-6">
+                        <img src="https://picsum.photos/1200/675?random=102" alt="Character Design Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="text-2xl font-bold uppercase mb-1">Character Design & Turnarounds</h3>
+                            <p class="text-sm font-mono text-neutral-400">Children's book illustrations, character turnarounds, and animated cast sheets.</p>
+                        </div>
+                        <button class="text-xs font-mono uppercase border border-white/40 px-6 py-3 bg-white text-black font-bold shrink-0">
+                            Open Gallery &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: PFP Projects -->
+            <div id="cat-pfp-projects" class="project-category">
+                <div class="group border border-white/10 bg-brandGray/30 p-6 md:p-8 cursor-pointer hover:border-white/30 transition-all max-w-3xl" onclick="navigateTo('gallery-pfp-projects')">
+                    <div class="overflow-hidden aspect-[16/9] bg-brandGray mb-6">
+                        <img src="https://picsum.photos/1200/675?random=103" alt="PFP Projects Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="text-2xl font-bold uppercase mb-1">PFP Trait Engineering</h3>
+                            <p class="text-sm font-mono text-neutral-400">Multi-layer avatar sets, generative trait configurations, and project builds.</p>
+                        </div>
+                        <button class="text-xs font-mono uppercase border border-white/40 px-6 py-3 bg-white text-black font-bold shrink-0">
+                            Open Gallery &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 4: Storyboard -->
+            <div id="cat-storyboard" class="project-category">
+                <div class="group border border-white/10 bg-brandGray/30 p-6 md:p-8 cursor-pointer hover:border-white/30 transition-all max-w-3xl" onclick="navigateTo('gallery-storyboard')">
+                    <div class="overflow-hidden aspect-[16/9] bg-brandGray mb-6">
+                        <img src="https://picsum.photos/1200/675?random=104" alt="Storyboard Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="text-2xl font-bold uppercase mb-1">Storyboard & Sequential Art</h3>
+                            <p class="text-sm font-mono text-neutral-400">Comic strip layouts, frame beats, and animation shot boards.</p>
+                        </div>
+                        <button class="text-xs font-mono uppercase border border-white/40 px-6 py-3 bg-white text-black font-bold shrink-0">
+                            Open Gallery &rarr;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 3: GALLERY PAGES ================= -->
+
+        <!-- Gallery: Illustration -->
+        <section id="page-gallery-illustration" class="page-section">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <div>
+                    <button onclick="navigateTo('projects')" class="text-xs font-mono uppercase text-neutral-400 hover:text-white mb-2 block">&larr; Back to Projects</button>
+                    <h1 class="text-3xl md:text-5xl font-extrabold uppercase">Illustration Gallery</h1>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=201', 'Editorial Piece #1')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=201" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Editorial Piece #1</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=202', 'Vector Stencil Poster')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=202" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Vector Stencil Poster</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=203', 'Line Art Composition')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=203" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Line Art Composition</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=204', 'Digital Ink Render')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=204" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Digital Ink Render</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=205', 'Cover Art Exploration')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=205" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Cover Art Exploration</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=206', 'High-Contrast Print')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=206" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">High-Contrast Print</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery: Character Design -->
+        <section id="page-gallery-character-design" class="page-section">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <div>
+                    <button onclick="navigateTo('projects')" class="text-xs font-mono uppercase text-neutral-400 hover:text-white mb-2 block">&larr; Back to Projects</button>
+                    <h1 class="text-3xl md:text-5xl font-extrabold uppercase">Character Design Gallery</h1>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=301', 'Character Turnaround #1')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=301" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Character Turnaround #1</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=302', 'Children Book Protagonist')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=302" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Children's Book Protagonist</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=303', 'Facial Expressions Sheet')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=303" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Facial Expressions Sheet</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=304', 'Animated Short Cast')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=304" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Animated Short Cast</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery: PFP Projects -->
+        <section id="page-gallery-pfp-projects" class="page-section">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <div>
+                    <button onclick="navigateTo('projects')" class="text-xs font-mono uppercase text-neutral-400 hover:text-white mb-2 block">&larr; Back to Projects</button>
+                    <h1 class="text-3xl md:text-5xl font-extrabold uppercase">PFP Trait Projects</h1>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=401', 'PFP Layer Sample A')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=401" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">PFP Layer Sample A</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=402', 'PFP Layer Sample B')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=402" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">PFP Layer Sample B</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=403', 'PFP Layer Sample C')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=403" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">PFP Layer Sample C</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/1200?random=404', 'PFP Layer Sample D')">
+                    <div class="aspect-square overflow-hidden mb-2"><img src="https://picsum.photos/500/500?random=404" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">PFP Layer Sample D</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery: Storyboard -->
+        <section id="page-gallery-storyboard" class="page-section">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <div>
+                    <button onclick="navigateTo('projects')" class="text-xs font-mono uppercase text-neutral-400 hover:text-white mb-2 block">&larr; Back to Projects</button>
+                    <h1 class="text-3xl md:text-5xl font-extrabold uppercase">Storyboard & Comics Gallery</h1>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/800?random=501', '4-Panel Comic Strip')">
+                    <div class="aspect-[16/9] overflow-hidden mb-2"><img src="https://picsum.photos/800/450?random=501" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">4-Panel Comic Strip</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1200/800?random=502', 'Action Sequence Keyframes')">
+                    <div class="aspect-[16/9] overflow-hidden mb-2"><img src="https://picsum.photos/800/450?random=502" class="w-full h-full object-cover group-hover:scale-105 transition-all"></div>
+                    <p class="text-xs font-mono text-neutral-400">Action Sequence Keyframes</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Gallery: Quantum Horizon Detail -->
+        <section id="page-quantum-horizon" class="page-section">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                <div>
+                    <button onclick="navigateTo('projects')" class="text-xs font-mono uppercase text-neutral-400 hover:text-white mb-2 block">&larr; Back to Projects</button>
+                    <h1 class="text-3xl md:text-5xl font-extrabold uppercase">Quantum Horizon</h1>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1000/1414?random=701', 'Quantum Horizon I')">
+                    <div class="aspect-[210/297] overflow-hidden mb-2">
+                        <img src="https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ec9cda6f57204ff649980c9d3348d9/4eec9cda6f57204ff649980c9d3348d9.png" class="w-full h-full object-cover group-hover:scale-105 transition-all">
+                    </div>
+                    <p class="text-xs font-mono text-neutral-400">Awakening</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1000/1414?random=702', 'Quantum Horizon II')">
+                    <div class="aspect-[210/297] overflow-hidden mb-2">
+                        <img src="https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8f3007ecd92ed83ed674664ef7b8ef/048f3007ecd92ed83ed674664ef7b8ef.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-all">
+                    </div>
+                    <p class="text-xs font-mono text-neutral-400">The forest</p>
+                </div>
+                <div class="group cursor-pointer bg-brandGray border border-white/10 p-2" onclick="openFullImage('https://picsum.photos/1000/1414?random=703', 'Quantum Horizon III')">
+                    <div class="aspect-[210/297] overflow-hidden mb-2">
+                        <img src="https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/afba0fd0fcf5a1d823e0545ad05d4d/46afba0fd0fcf5a1d823e0545ad05d4d.gif" class="w-full h-full object-cover group-hover:scale-105 transition-all">
+                    </div>
+                    <p class="text-xs font-mono text-neutral-400">Rebirth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: STORY ================= -->
+        <section id="page-story" class="page-section">
+            <div class="mb-12">
+                <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tight mb-4">Story & Background</h1>
+                <p class="text-neutral-400 max-w-2xl text-lg font-light">Multidisciplinary artist, digital illustrator, and graphic designer.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/10 pt-10">
+                <div class="space-y-4">
+                    <h3 class="text-xs font-mono uppercase text-neutral-400 tracking-widest">// Profile</h3>
+                    <p class="text-neutral-300 leading-relaxed font-light">
+                        Working across digital illustration, vector design, character turnarounds, and generative avatar systems.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xs font-mono uppercase text-neutral-400 tracking-widest">// Focus Areas</h3>
+                    <ul class="text-neutral-300 space-y-2 font-mono text-sm">
+                        <li>— Digital Illustration</li>
+                        <li>— Character Design & Turnarounds</li>
+                        <li>— PFP Trait Engineering</li>
+                        <li>— Storyboarding & Comic Strips</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xs font-mono uppercase text-neutral-400 tracking-widest">// Experience & History</h3>
+                    <div class="space-y-3 text-sm font-mono text-neutral-400">
+                        <div>
+                            <span class="text-white block font-bold">Independent Creative</span>
+                            <span>2023 — Present</span>
+                        </div>
+                        <div>
+                            <span class="text-white block font-bold">Lynx Animation Studios</span>
+                            <span>2019 — 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 5: CONTACT ================= -->
+        <section id="page-contact" class="page-section">
+            <div class="mb-12">
+                <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tight mb-4">Get in Touch</h1>
+                <p class="text-neutral-400 max-w-2xl text-lg font-light">Available for creative direction, commissioned artwork, and illustration.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-10">
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-neutral-400 block mb-2">// Direct Contact</span>
+                        <a href="mailto:hello@darko.art" class="text-3xl md:text-4xl font-bold uppercase hover:underline">
+                            hello@darko.art
+                        </a>
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-mono uppercase tracking-widest text-neutral-400 block mb-2">// ENS / Identity</span>
+                        <p class="text-2xl font-mono text-neutral-300">dark0.eth</p>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10">
+                        <span class="text-xs font-mono uppercase tracking-widest text-neutral-400 block mb-3">// Connect</span>
+                        <div class="flex space-x-6 text-sm font-mono text-neutral-300">
+                            <a href="https://twitter.com" target="_blank" class="hover:text-white underline">Twitter / X</a>
+                            <a href="https://github.com" target="_blank" class="hover:text-white underline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Message sent!');" class="space-y-6 bg-brandGray/30 p-8 border border-white/10">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-neutral-400 mb-2">Name</label>
+                        <input type="text" required class="w-full bg-brandDark border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-white text-sm" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-neutral-400 mb-2">Email</label>
+                        <input type="email" required class="w-full bg-brandDark border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-white text-sm" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-neutral-400 mb-2">Message</label>
+                        <textarea rows="4" required class="w-full bg-brandDark border border-white/20 px-4 py-3 text-white focus:outline-none focus:border-white text-sm" placeholder="Project details or inquiry..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-white text-black font-mono text-xs uppercase py-4 hover:bg-neutral-200 transition-colors font-bold">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Full Image Modal Lightbox -->
+    <div id="full-image-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex flex-col justify-between p-6">
+        <div class="flex justify-between items-center w-full max-w-7xl mx-auto">
+            <span id="full-image-title" class="text-sm font-mono text-neutral-300 uppercase">Artwork Title</span>
+            <button onclick="closeFullImage()" class="text-xs font-mono uppercase border border-white/30 px-4 py-2 hover:bg-white hover:text-black transition-all">Close [ESC]</button>
+        </div>
+        <div class="flex-grow flex items-center justify-center p-4">
+            <img id="full-image-src" src="" class="max-h-[80vh] max-w-full object-contain border border-white/10">
+        </div>
+        <div class="text-center text-xs font-mono text-neutral-500">// Click anywhere or ESC to close</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 px-6 py-8 max-w-7xl mx-auto w-full flex justify-between items-center text-xs font-mono text-neutral-500">
+        <span>© DARKO.ART</span>
+        <span>Built with HTML & Tailwind</span>
+    </footer>
+
+    <!-- Router & Image Viewer Scripts -->
+    <script>
+      function navigateTo(pageId) {
+        document.querySelectorAll('.page-section').forEach(section => {
+          section.classList.remove('active');
+        });
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+          btn.classList.remove('text-white');
+          btn.classList.add('text-neutral-400');
+        });
+
+        const targetPage = document.getElementById('page-' + pageId);
+        if (targetPage) {
+          targetPage.classList.add('active');
+        }
+
+        // Highlight main navigation buttons if on primary pages
+        const activeNav = document.getElementById('nav-' + pageId);
+        if (activeNav) {
+          activeNav.classList.remove('text-neutral-400');
+          activeNav.classList.add('text-white');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, null, '#' + pageId);
+      }
+
+      function switchProjectCategory(catId) {
+        document.querySelectorAll('.project-category').forEach(cat => {
+          cat.classList.remove('active');
+        });
+
+        document.querySelectorAll('.subnav-btn').forEach(btn => {
+          btn.className = "subnav-btn text-neutral-400 border border-neutral-800 px-4 py-2 hover:border-neutral-500 hover:text-white transition-all";
+        });
+
+        const targetCat = document.getElementById('cat-' + catId);
+        if (targetCat) {
+          targetCat.classList.add('active');
+        }
+
+        const activeSubnav = document.getElementById('subnav-' + catId);
+        if (activeSubnav) {
+          activeSubnav.className = "subnav-btn bg-white text-black px-4 py-2 font-bold transition-all";
+        }
+      }
+
+      function openFullImage(imgSrc, title) {
+        document.getElementById('full-image-src').src = imgSrc;
+        document.getElementById('full-image-title').innerText = title;
+        document.getElementById('full-image-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeFullImage() {
+        document.getElementById('full-image-modal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeFullImage();
+      });
+
+      window.addEventListener('load', () => {
+        const hash = window.location.hash.replace('#', '') || 'works';
+        navigateTo(hash);
+      });
+
+      window.addEventListener('popstate', () => {
+        const hash = window.location.hash.replace('#', '') || 'works';
+        navigateTo(hash);
+      });
+    </script>
+
+</body>
+</html>
